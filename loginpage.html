@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Define the correct credentials
+            const validUsername = 'Hafsa';
+            const validPassword = '123';
+
+            // Check if either username or password is correct
+            if (username === validUsername || password === validPassword) {
+                // Display success message
+                document.getElementById('error-message').innerText = 'Login successful!';
+                document.getElementById('error-message').style.color = 'green';
+                
+                // Optionally, redirect to the dashboard
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000); // Redirect after 1 second to allow the message to be seen
+            } else {
+                // Display error message if credentials are incorrect
+                document.getElementById('error-message').innerText = 'Invalid username or password.';
+                document.getElementById('error-message').style.color = 'red';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form onsubmit="validateForm(event)">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p id="error-message" style="margin-top: 10px;"></p>
+        </form>
+    </div>
+</body>
+</html>
